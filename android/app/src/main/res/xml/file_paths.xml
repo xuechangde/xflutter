@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <!--支持本地路径-->
+        <!--表示Environment.getExternalStorageDirectory() 指向的目录-->
+        <external-path name="external_storage_root" path="." />
+
+        <!--表示 content.getFileDir() 获取到的目录-->
+        <files-path name="files-path" path="." />
+
+        <!--表示 content.getCacheDir() 获取到的目录-->
+        <cache-path name="cache-path" path="." />
+
+        <!--表示 ContextCompat.getExternalFilesDirs() 获取到的目录-->
+        <external-files-path name="external_file_path" path="." />
+
+        <!--表示 ContextCompat.getExternalCacheDirs() 获取到的目录-->
+        <external-cache-path name="external_cache_path" path="." />
+
+        <!--支持根路径-->
+        <root-path name="root_path" path="" />
+    </paths>
+</resources>

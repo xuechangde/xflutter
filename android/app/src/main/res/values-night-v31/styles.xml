@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LaunchTheme" parent="Theme.SplashScreen">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="windowSplashScreenBackground">@android:color/background_dark</item>
+        <!-- Use windowSplashScreenAnimatedIcon to add either a drawable or an
+        animated drawable. One of these is required. -->
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/logo</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/splash_screen_icon_background</item>
+        <!-- Required for animated icons -->
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@android:color/background_dark
+        </item>
+        <!--启动页状态栏设置为透明色-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="postSplashScreenTheme">@style/NormalTheme</item>
+    </style>
+</resources>
