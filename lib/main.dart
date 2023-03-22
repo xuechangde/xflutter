@@ -3,28 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluwx/fluwx.dart';
 import 'package:get/get.dart';
 import 'package:umeng_common_sdk/umeng_common_sdk.dart';
 import 'common/app_config.dart';
 import 'common/common_index.dart';
 import 'common/global/global_bloc.dart';
-import 'common/router/app_route_observer.dart';
 
 void main() async {
   await Global.init();
   runApp(const MyApp());
-}
-
-///初始化第三方相关
-Future<void> initThirdSdk() async {
-  registerWxApi(
-      appId: AppConfig.wxAppId, universalLink: AppConfig.universalLink);
-  if (GlobalBloc.to.isAgreePrivacy) {
-    await UmengCommonSdk.initCommon(AppConfig.umAndroidAppKey,
-        AppConfig.umIosAppKey, AppConfig.channelName);
-    UmengCommonSdk.setPageCollectionModeManual();
-  }
 }
 
 class MyApp extends StatelessWidget {
@@ -33,13 +20,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final botToastBuilder = BotToastInit();
+    final easyLoadingBuilder = EasyLoading.init();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppConfig.appName,
       builder: (ctx, child) {
-        ScreenUtil.init(ctx, designSize: const Size(750, 1334));
-        EasyLoading.init();
+        ScreenUtil.init(ctx, designSize: const Size(750, 1624));
         child = botToastBuilder(ctx, child);
+        child = easyLoadingBuilder(ctx,child);
         return child;
       },
       localizationsDelegates: const [
@@ -55,9 +43,18 @@ class MyApp extends StatelessWidget {
       getPages: AppPages.pages(),
       initialRoute: AppRoutes.initial,
       navigatorObservers: [
-        AppRouteObserver(),
         BotToastNavigatorObserver(),
       ],
+      routingCallback: (routing){
+        if(routing!=null&&GlobalBloc.to.isAgreePrivacy&&routing.current!=AppRoutes.initial){
+          if(routing.previous.isNotEmpty&&routing.previous!=AppRoutes.initial){
+            UmengCommonSdk.onPageEnd(routing.previous);
+          }
+          if(routing.current.isNotEmpty){
+            UmengCommonSdk.onPageStart(routing.current);
+          }
+        }
+      },
     );
   }
 }

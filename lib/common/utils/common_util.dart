@@ -1,12 +1,57 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/platform/platform.dart';
 
+import '../app_config.dart';
+import '../constant.dart';
+
+///公共方法类
 class CommonUtils {
   ///获取图片路径
   static String getImgPath(String name) {
     return 'assets/images/$name';
   }
+
+  ///获取设备型号
+  static Future<String?> getDeviceModel() async{
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    if (GetPlatform.isAndroid) {
+      AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
+      return androidDeviceInfo.model;
+    } else {
+      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      return iosInfo.model;
+    }
+  }
+
+  ///获取app相关应用市场H5地址
+  static String getAppUrl() {
+    String downloadUrl = '';
+    switch(AppConfig.channelName){
+      case 'huawei':
+        downloadUrl = Constant.huaweiAppUrl;
+        break;
+      case 'xiaomi':
+        downloadUrl = Constant.xiaomiAppUrl;
+        break;
+      case 'oppo':
+        downloadUrl = Constant.oppoAppUrl;
+        break;
+      case 'vivo':
+        downloadUrl = Constant.vivoAppUrl;
+        break;
+      case 'yingyongbao':
+        downloadUrl = Constant.yingyongbaoAppUrl;
+        break;
+      default:
+        downloadUrl = Constant.vivoAppUrl;
+        break;
+    }
+    return downloadUrl;
+  }
+
   /// 退出 APP
   static void doQuit() async {
     await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
@@ -27,5 +72,4 @@ class CommonUtils {
       await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
     }
   }
-
 }

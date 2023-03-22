@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluwx/fluwx.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:umeng_common_sdk/umeng_common_sdk.dart';
 import 'package:xflutter/common/app_config.dart';
+import 'package:xflutter/common/utils/third_party_util.dart';
 import '../http/dio_utils.dart';
 import '../service/api_service.dart';
 import '../service/sp_service.dart';
@@ -21,7 +20,7 @@ class Global {
     await Get.putAsync<ApiService>(() => ApiService().init());
     await Get.putAsync<DioUtil>(() => DioUtil().init());
     await setAppConfig();
-    initThirdSdk();
+    ThirdPartyUtil.initThirdSdk();
   }
   static void setSystemUi() {
     if (GetPlatform.isAndroid) {
@@ -34,15 +33,6 @@ class Global {
         // systemNavigationBarIconBrightness: Brightness.dark,
       );
       SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-    }
-  }
-
-  ///初始化第三方相关
-  static void initThirdSdk() async{
-    registerWxApi(appId: AppConfig.wxAppId, universalLink: AppConfig.universalLink);
-    if (GlobalBloc.to.isAgreePrivacy) {
-      await UmengCommonSdk.initCommon(AppConfig.umAndroidAppKey,AppConfig.umIosAppKey,AppConfig.channelName);
-      UmengCommonSdk.setPageCollectionModeManual();
     }
   }
 

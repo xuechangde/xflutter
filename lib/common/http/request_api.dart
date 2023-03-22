@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:xflutter/common/common_index.dart';
-import 'package:xflutter/common/http/base_resp.dart';
+import 'package:xflutter/common/base/base_resp.dart';
 
 part 'request_api.g.dart'; //必须配置，否则无法生成.g文件
 
@@ -23,7 +23,7 @@ abstract class RestClient {
   }
 
   @GET("app/{id}")
-  Future<BaseResp> getToken(@Path() int id);
+  Future<BaseResp?> getToken(@Path() int id);
 
   @GET("/posts/{no}")
   Future getTestData(@Path() int no);

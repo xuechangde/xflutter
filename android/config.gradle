@@ -6,6 +6,13 @@ ext {
             targetSdkVersion : 31,
     ]
 
+    keystore = [
+            storePassword:"x123456",
+            keyPassword:"x123456",
+            keyAlias:"xkeystore",
+            storeFile:"./xkeystore.jks",
+    ]
+
     versions = [
             "splashscreen_version":"1.0.0-alpha01",
     ]

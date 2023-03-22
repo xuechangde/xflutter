@@ -49,6 +49,7 @@ class ThemeConfig {
           .copyWith(secondary: accentColor),
     );
     themeData = themeData.copyWith(
+      primaryColor: themeColor,
       appBarTheme: themeData.appBarTheme.copyWith(elevation: 0),
       splashColor: themeColor.withAlpha(50),
       highlightColor: themeColor.withAlpha(50),
@@ -66,20 +67,14 @@ class ThemeConfig {
         labelStyle: themeData.textTheme.caption,
         backgroundColor: themeData.chipTheme.backgroundColor?.withOpacity(0.1),
       ),
-      inputDecorationTheme: InputDecorationTheme(
-        hintStyle: const TextStyle(fontSize: 14),
-        errorBorder: UnderlineInputBorder(
-            borderSide: BorderSide(width: 0.5, color: themeData.errorColor)),
-        focusedErrorBorder: UnderlineInputBorder(
-            borderSide: BorderSide(width: 0.7, color: themeData.errorColor)),
-        focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(width: 0.5, color: themeData.primaryColor)),
-        enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(width: 0.5, color: themeData.dividerColor)),
-        border: UnderlineInputBorder(
-            borderSide: BorderSide(width: 0.5, color: themeData.dividerColor)),
-        disabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(width: 0.5, color: themeData.disabledColor)),
+      inputDecorationTheme: const InputDecorationTheme(
+        hintStyle: TextStyle(fontSize: 14),
+        errorBorder: InputBorder.none,
+        focusedErrorBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        border: InputBorder.none,
+        disabledBorder: InputBorder.none,
       ),
     );
     return themeData;

@@ -20,7 +20,7 @@ dependencies:
   #屏幕适配
   flutter_screenutil: ^5.6.1
   get: ^4.6.5
-  shared_preferences: ^2.0.15
+  shared_preferences: ^2.0.18
   bot_toast: ^4.0.2
   #加密
   crypto: ^3.0.2
@@ -36,17 +36,33 @@ dependencies:
   #启动外部app
   external_app_launcher: ^3.1.0
   #获取应用包信息
-  package_info_plus: ^3.0.3
-  #微信分享&支付
-  fluwx: ^3.12.2
-  #支付宝支付
-  tobias: ^2.4.1
+  package_info_plus: ^1.4.3+1
   #权限管理
   permission_handler: ^10.2.0
   #下拉刷新
   pull_to_refresh: ^2.0.0
   #loading控件
   flutter_easyloading: ^3.0.5
+  #图片缓存
+  cached_network_image: ^3.2.3
+  #图片查看
+  photo_view: ^0.14.0
+  #图片保存相册
+  image_gallery_saver: ^1.7.1
+  #文件位置
+  path_provider: ^2.0.13
+  #APP版本更新
+  flutter_xupdate: ^2.0.3
+  #获取设备信息
+  device_info_plus: ^8.1.0
+  #网页加载
+#  webview_flutter: ^4.0.6
+  #极光一键登录
+#  jverify: ^2.2.8
+  #微信分享&支付
+#  fluwx: ^3.12.2
+  #支付宝支付
+#  tobias: ^2.4.1
 
 dev_dependencies:
   flutter_test:

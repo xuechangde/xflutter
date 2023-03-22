@@ -25,12 +25,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
-
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -53,20 +47,26 @@ android {
             //abiFilters 'armeabi-v7a','armeabi','arm64-v8a','x86'  //debug 包
             abiFilters 'armeabi', 'arm64-v8a' // release包
         }
+        //设置节点值，如极光之类的..
+//        manifestPlaceholders = [
+//                JPUSH_PKGNAME : applicationId,
+//                JPUSH_APPKEY : "", // NOTE: JPush 上注册的包名对应的 Appkey.
+//                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//        ]
     }
 
     signingConfigs {
         debug {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword keystoreProperties['storePassword']
+            keyAlias rootProject.ext.keystore.keyAlias
+            keyPassword rootProject.ext.keystore.keyPassword
+            storeFile file(rootProject.ext.keystore.storeFile)
+            storePassword rootProject.ext.keystore.storePassword
         }
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword keystoreProperties['storePassword']
+            keyAlias rootProject.ext.keystore.keyAlias
+            keyPassword rootProject.ext.keystore.keyPassword
+            storeFile file(rootProject.ext.keystore.storeFile)
+            storePassword rootProject.ext.keystore.storePassword
         }
     }
 
@@ -83,9 +83,9 @@ android {
 
     flavorDimensions "channel"
     productFlavors {
-        douyin {
+        develop {
             dimension "channel"
-            manifestPlaceholders = [CHANNEL_NAME: "douyin"]
+            manifestPlaceholders = [CHANNEL_NAME: "develop"]
         }
 //        yingyongbao {
 //            dimension "channel"

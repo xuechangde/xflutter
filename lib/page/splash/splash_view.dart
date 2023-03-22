@@ -52,9 +52,9 @@ class SplashPage extends GetView<SplashLogic> {
                 },
                 child: Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: Decorations.padding4BlackTran40,
+                    decoration: UiDecorations.padding4BlackTran40,
                     child: Text('${Ids.jumpCount.tr}${controller.state.count.value}',
-                      style: TextStyles.primary,
+                      style: UiTextStyles.primary,
                     )),
               ),
             ),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,6 +28,12 @@ class SpService extends GetxService {
     return await _prefs.setStringList(key, value);
   }
 
+  Future<bool> setObject(String key, dynamic value) async {
+    var obj = {'object': value};
+    var json = jsonEncode(obj);
+    return await _prefs.setString(key, json);
+  }
+
   String getString(String key) {
     return _prefs.getString(key) ?? '';
   }
@@ -40,6 +48,15 @@ class SpService extends GetxService {
 
   List<String> getList(String key) {
     return _prefs.getStringList(key) ?? [];
+  }
+
+  dynamic getObject(String key) {
+    dynamic result = _prefs.getString(key);
+    if (null == result) {
+      return null;
+    }
+    var json = jsonDecode(result);
+    return json['object'];
   }
 
   Future<bool> remove(String key) async {

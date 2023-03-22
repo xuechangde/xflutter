@@ -1,6 +1,8 @@
 
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import '../http/base_resp.dart';
+import '../../res/strings.dart';
+import '../base/base_resp.dart';
 import '../http/request_api.dart';
 
 class ApiService extends GetxService{
@@ -11,8 +13,18 @@ class ApiService extends GetxService{
 
   ///示例调用内部接口方法
   Future<String> getToken() async{
-    BaseResp baseResp = await requestClientOther.getToken(2);
-    return baseResp.data;
+    EasyLoading.show(status:Ids.loading.tr);
+    BaseResp? baseResp = await requestClientOther.getToken(2);
+    EasyLoading.dismiss();
+    if(baseResp!=null){
+      if (0 == baseResp.code) {
+        EasyLoading.showToast('');
+        return baseResp.data;
+      } else {
+        EasyLoading.showError(baseResp.msg ?? Ids.unknownError.tr);
+      }
+    }
+    return baseResp?.data;
   }
 
   ///示例调用第三方接口方法

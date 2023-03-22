@@ -18,7 +18,7 @@ class PrivacyPolicyDialog extends StatelessWidget {
       title: Text(Ids.warmPrompt.tr),
       content: Container(
         height: SizeUnit.dialogHeight,
-        padding: const EdgeInsets.only(top: SizeUnit.dialogTopPadding),
+        padding: EdgeInsets.only(top: SizeUnit.dialogTopPadding),
         child: SingleChildScrollView(
           child: _buildContent(context),
         ),
@@ -46,11 +46,11 @@ class PrivacyPolicyDialog extends StatelessWidget {
     return RichText(
         text: TextSpan(
       text: Ids.agreementContent1.tr,
-      style: TextStyles.agreementTextStyle,
+      style: UiTextStyles.agreementTextStyle,
       children: [
         TextSpan(
           text: Ids.agreementContent2.tr,
-          style: TextStyles.agreementTextBlueStyle,
+          style: UiTextStyles.agreementTextBlueStyle,
           //点击事件
           recognizer: _userProtocolRecognizer
             ..onTap = () {
@@ -59,11 +59,11 @@ class PrivacyPolicyDialog extends StatelessWidget {
         ),
         TextSpan(
           text: Ids.agreementContent3.tr,
-          style: TextStyles.agreementTextStyle,
+          style: UiTextStyles.agreementTextStyle,
         ),
         TextSpan(
           text: Ids.agreementContent4.tr,
-          style: TextStyles.agreementTextBlueStyle,
+          style: UiTextStyles.agreementTextBlueStyle,
           //点击事件
           recognizer: _privacyProtocolRecognizer
             ..onTap = () {
@@ -73,7 +73,7 @@ class PrivacyPolicyDialog extends StatelessWidget {
         //后续显示的文本内容
         TextSpan(
           text: Ids.agreementContent5.tr,
-          style: TextStyles.agreementTextStyle,
+          style: UiTextStyles.agreementTextStyle,
         )
       ],
     ));

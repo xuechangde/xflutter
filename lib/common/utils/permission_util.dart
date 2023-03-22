@@ -2,17 +2,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+///权限申请工具类
 class PermissionUtil {
   /// 检测是否有权限
   /// [permissionList] 权限申请列表
   /// [onSuccess] 全部成功
   /// [onFailed] 有一个失败
   /// [goSetting] 前往设置 插件虽然提供了一个跳转设置的方法不过也可以自定义
+  /// [permissionDescription] 权限描述
   static checkPermission(
       {required List<Permission> permissionList,
         VoidCallback? onSuccess,
         VoidCallback? onFailed,
-        VoidCallback? goSetting}) async {
+        VoidCallback? goSetting,
+        String? permissionDescription,}) async {
     ///一个新待申请权限列表
     List<Permission> newPermissionList = [];
 

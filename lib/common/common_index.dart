@@ -17,4 +17,5 @@ export './utils/method_channel_util.dart';
 export './utils/screen_util.dart';
 export './utils/tap_util.dart';
 export './http/dio_utils.dart';
+export './utils/umeng_util.dart';
 

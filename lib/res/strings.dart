@@ -64,6 +64,36 @@ class Ids {
   static const String connectionTimeout = 'connectionTimeout';
   ///网络连接异常,请检查网络！
   static const String networkConnectionException = 'networkConnectionException';
+  ///缺少必要权限
+  static const String noPermission = 'noPermission';
+  ///取消
+  static const String cancel = 'cancel';
+  ///确认
+  static const String confirm = 'confirm';
+  ///加载中
+  static const String loading = 'loading';
+  ///下载中
+  static const String downloading = 'downloading...';
+  ///下载失败
+  static const String downloadFail = 'downloadFail';
+  ///下载成功
+  static const String downloadSuccess = 'downloadSuccess';
+  ///图片保存失败
+  static const String imgSaveFail = 'imgSaveFail';
+  ///图片保存成功
+  static const String imgSaveSuccess = 'imgSaveSuccess';
+  ///登录
+  static const String login = 'login';
+  ///注册
+  static const String register = 'register';
+  ///发送验证码
+  static const String sendSms = 'sendSms';
+  ///用户拒绝授权
+  static const String userRefusedAuthorization = 'userRefusedAuthorization';
+  ///用户取消授权
+  static const String userCancelAuthorization = 'userCancelAuthorization';
+  ///和
+  static const String and = 'and';
 }
 
 
@@ -99,6 +129,20 @@ class Strings extends Translations {
           Ids.receiveTimeout:'响应超时',
           Ids.connectionTimeout:'连接超时',
           Ids.networkConnectionException:'网络连接异常,请检查网络！',
+          Ids.noPermission:'缺少必要权限！',
+          Ids.cancel:'取消',
+          Ids.confirm:'确认',
+          Ids.loading:'加载中...',
+          Ids.downloading:'下载中...',
+          Ids.downloadFail:'下载失败',
+          Ids.downloadSuccess:'下载成功',
+          Ids.imgSaveFail:'图片保存失败',
+          Ids.imgSaveSuccess:'图片保存成功',
+          Ids.login:'登录',
+          Ids.register:'注册',
+          Ids.sendSms:'发送验证码',
+          Ids.userRefusedAuthorization:'用户拒绝授权',
+          Ids.userCancelAuthorization:'用户取消授权',
         },
         'en_US': {
           Ids.warmPrompt: 'Warm Prompt',
@@ -127,6 +171,20 @@ class Strings extends Translations {
           Ids.receiveTimeout:'receive timeout',
           Ids.connectionTimeout:'connection timeout',
           Ids.networkConnectionException:'The network connection is abnormal, please check the network!',
+          Ids.noPermission:'noPermission',
+          Ids.cancel:'cancel',
+          Ids.confirm:'confirm',
+          Ids.loading:'loading...',
+          Ids.downloading:'downloading...',
+          Ids.downloadFail:'downloadFail',
+          Ids.downloadSuccess:'downloadSuccess',
+          Ids.imgSaveFail:'imgSaveFail',
+          Ids.imgSaveSuccess:'imgSaveSuccess',
+          Ids.login:'login',
+          Ids.register:'register',
+          Ids.sendSms:'sendSms',
+          Ids.userRefusedAuthorization:'User Refused Authorization',
+          Ids.userCancelAuthorization:'User Cancel Authorization',
         }
       };
 }

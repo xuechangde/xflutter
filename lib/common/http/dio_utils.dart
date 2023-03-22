@@ -9,7 +9,7 @@ import 'package:xflutter/common/common_index.dart';
 import 'package:xflutter/common/http/request_interceptor.dart';
 import 'package:xflutter/common/http/response_interceptor.dart';
 
-import 'base_resp.dart';
+import '../base/base_resp.dart';
 import 'token_interceptor.dart';
 
 /// 请求方法.
@@ -92,7 +92,6 @@ class DioUtil extends get_x.GetxService{
   /// get Def Options.
   static BaseOptions getDefOptions() {
     BaseOptions options = BaseOptions();
-    options.contentType = "application/x-www-form-urlencoded";
     options.connectTimeout = const Duration(milliseconds: Constant.connectTimeout);
     options.receiveTimeout = const Duration(milliseconds: Constant.receiveTimeout);
     options.sendTimeout = const Duration(milliseconds: Constant.sendTimeout);
@@ -176,9 +175,6 @@ class DioUtil extends get_x.GetxService{
         response.statusCode == HttpStatus.created) {
       try {
         if (response.data is Map) {
-          rStatus = (response.data[Constant.statusKey] is int)
-              ? response.data[Constant.statusKey].toString()
-              : response.data[Constant.statusKey];
           rCode = (response.data[Constant.codeKey] is String)
               ? int.tryParse(response.data[Constant.codeKey])
               : response.data[Constant.codeKey];
@@ -186,16 +182,13 @@ class DioUtil extends get_x.GetxService{
           rData = response.data[Constant.dataKey];
         } else {
           Map<String, dynamic> dataMap = _decodeData(response);
-          rStatus = (dataMap[Constant.statusKey] is int)
-              ? dataMap[Constant.statusKey].toString()
-              : dataMap[Constant.statusKey];
           rCode = (dataMap[Constant.codeKey] is String)
               ? int.tryParse(dataMap[Constant.codeKey])
               : dataMap[Constant.codeKey];
           rMsg = dataMap[Constant.messageKey];
           rData = dataMap[Constant.dataKey];
         }
-        response.data = BaseResp(rStatus, rCode, rMsg, rData).toJson();
+        response.data = BaseResp(rCode, rMsg, rData).toJson();
         return response;
       } catch (e) {
         return Future.error(DioError(

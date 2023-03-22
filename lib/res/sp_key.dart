@@ -9,4 +9,6 @@ class SpKeyConst {
   static const kAppToken = 'kAppToken';
   ///cookie
   static const kAppCookie = 'kAppCookie';
+  ///用户信息
+  static const userInfo = 'userInfo';
 }
